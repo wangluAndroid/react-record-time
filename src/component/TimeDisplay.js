@@ -95,8 +95,8 @@ export default class TimeDisplay extends Component {
     };
 
     //清空函数：这种写法，下面可以直接使用onClick={ this.cleanLog}调用，注意不用写括号：onClick={ this.cleanLog()}
-    cleanLog = ()=>{
-        console.log("--------清空-------");
+    cleanLog = (xxx)=>{
+        console.log("--------清空-------"+xxx);
         this.setState({logArray:[]})
     };
 
@@ -114,7 +114,9 @@ export default class TimeDisplay extends Component {
                     <Button styles="warn" text="重置" onClick={()=>this.resetTime()}/>
                     {/*或者下面的调用不变，而是将buttonTggle改写成箭头函数*/}
                     <Button styles="primary" text="记录" onClick={this.handleLogTime}/>
-                    <Button styles="success" text="清空" onClick={ this.cleanLog}/>
+                    {/*{如果没有参数的话，可以直接使用this.cleanLog或者使用()=>this.cleanLog()，这两种调用方式都行}*/}
+                    {/*<Button styles="success" text="清空" onClick={ this.cleanLog} />*/}
+                    <Button styles="success" text="清空" onClick={ ()=>this.cleanLog('清空')}/>
                 </div>
                 <DisplayLog logArray = {this.state.logArray} />
             </div>
